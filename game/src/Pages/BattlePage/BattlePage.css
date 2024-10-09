@@ -5,7 +5,7 @@
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     font-family: "Press Start 2P", cursive;
     image-rendering: pixelated;
 }
@@ -24,7 +24,7 @@
     width: 240px;
     padding: 16px;
     image-rendering: pixelated;
-    transition: transform .3s, border-color 0.1s, box-shadow 0.1s;
+    transition: transform 0.3s, border-color 0.1s, box-shadow 0.1s;
 }
 
 .card:hover {
