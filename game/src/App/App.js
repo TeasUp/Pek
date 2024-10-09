@@ -1,7 +1,9 @@
 import "./App.css";
-
+import BattlePage from "../Pages/BattlePage/BattlePage"
 function App() {
-    return <div className="App">app</div>;
+    return (
+        <BattlePage />
+    );
 }
 
 export default App;
