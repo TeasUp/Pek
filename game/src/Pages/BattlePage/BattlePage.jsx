@@ -1,4 +1,5 @@
 import React from "react";
+import "./BattlePage.css";
 
 let exampleCards = [
     {
@@ -35,20 +36,28 @@ let exampleCards = [
 
 export default function battlePage() {
     return (
-        <main>
+        <main className="battle-page">
             <section className="cards">
-                <ul>
-                    {
-                        exampleCards.forEach(card => {
-                            <li>
-                                    type: {card.type}
-                                    title: {card.title}
-                                    description: {card.description}
-                                    details: {card.details}
-                            </li>
-                        })
-                    }
-                </ul>
+                {exampleCards.map((card) => (
+                    <div key={card.title} className="card">
+                        <div className="card-type">
+                            {card.type.toUpperCase()}
+                        </div>
+                        <h2 className="card-title">
+                            {card.title.toUpperCase()}
+                        </h2>
+                        <p className="card-description">{card.description}</p>
+                        <div className="card-details">
+                            {Object.entries(card.details).map(
+                                ([key, value]) => (
+                                    <span key={key} className="detail">
+                                        {key.toUpperCase()}: {value}
+                                    </span>
+                                )
+                            )}
+                        </div>
+                    </div>
+                ))}
             </section>
         </main>
     );
