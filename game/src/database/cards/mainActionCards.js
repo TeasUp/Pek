@@ -66,7 +66,7 @@ const actionCards = [
         details: {
             baseDamage: 0,
             focusCost: -20,
-            coolDown: 4,
+            coolDown: "one time use",
             healthRestore: 0,
             additionalEffects: [{ type: "bleed", duration: 4 }],
             targetType: "area",
