@@ -8,13 +8,23 @@
     align-items: flex-end;
     font-family: "Press Start 2P", cursive;
     image-rendering: pixelated;
+    padding: 20px;
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
 }
 
 .cards {
+    flex: 0 0 70%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 16px;
+    padding: 20px;
+    height: 300px;
 }
 
 .card {
@@ -22,15 +32,17 @@
     background-color: #333;
     border: 4px solid #fff;
     cursor: pointer;
-    min-height: 250px; 
+    height: 300px;
     padding: 16px;
     image-rendering: pixelated;
-    transition: transform .4s, border-color 0.1s, box-shadow 0.1s;
-    margin-left: -150px; 
+    transition: transform 0.4s, border-color 0.1s, box-shadow 0.1s;
+    margin-left: -150px;
+    max-width: 240px;
+    overflow-y: auto;
 }
 
 .card:first-child {
-    margin-left: 0; 
+    margin-left: 0;
 }
 
 .card:hover {
@@ -75,4 +87,58 @@
     font-size: 10px;
     padding: 4px 8px;
     border: 2px solid #0ff;
+}
+
+.actions {
+    flex: 0 0 30%;
+    background-color: #333;
+    border: 4px solid #fff;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    overflow-y: auto;
+}
+
+.actions ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.actions li {
+    margin-bottom: 12px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.action-button {
+    font-family: "Press Start 2P", cursive;
+    background-color: #333;
+    color: #ff0;
+    border: 2px solid #ff0;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+}
+
+.action-button:hover {
+    background-color: #ff0;
+    color: #333;
+}
+
+.action-button:active {
+    background-color: #f00;
+    color: #fff;
+    border-color: #f00;
+    box-shadow: inset 0 0 10px #ff0;
 }
