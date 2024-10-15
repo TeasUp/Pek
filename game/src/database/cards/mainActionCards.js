@@ -1,15 +1,16 @@
 const actionCards = [
     {
         type: "attack",
-        title: "Mohg's attack",
+        title: "Mohg's Attack",
         description:
             "A powerful melee attack that inflicts damage and a bleeding effect.",
         details: {
             baseDamage: 150,
-            focusCost: 5,
+            focusCost: 10,
             coolDown: 1,
-            healthRestore: 0,
-            additionalEffects: [{ type: "bleed", duration: 3, damage: 10 }],
+            additionalEffects: [
+                { type: "bleed", duration: 3, bleedDamage: 10 },
+            ],
             targetType: "single",
             targetKind: "enemy",
         },
@@ -20,57 +21,40 @@ const actionCards = [
         description:
             "Creates a protective shield absorbing incoming damage but gives deBuffs.",
         details: {
-            baseDamage: 0,
-            focusCost: 15,
+            focusCost: 10,
             coolDown: 3,
-            healthRestore: 0,
-            additionalEffects: [{ type: "shield", amount: 100 }],
+            additionalEffects: [{ type: "shield", attackProtection: 100 }],
             targetType: "single",
             targetKind: "party",
         },
     },
     {
         type: "attack",
-        title: "Do not Disturb",
+        title: "Do Not Disturb",
         description: "Launch a projectile that damages and slows the target.",
         details: {
             baseDamage: 120,
             focusCost: 10,
             coolDown: 2,
-            healthRestore: 0,
-            additionalEffects: [{ type: "slow", duration: 1, amount: -10 }],
+            additionalEffects: [
+                { type: "slowness", duration: 1, slownessAmount: 10 },
+            ],
             targetType: "single",
             targetKind: "enemy",
         },
     },
     {
         type: "attack",
-        title: "Give it back",
+        title: "Give It Back",
         description:
             "Drains energy from the enemy, dealing damage while restoring health.",
         details: {
             baseDamage: 100,
-            focusCost: 5,
-            coolDown: 3,
-            healthRestore: 20,
-            additionalEffects: [],
-            targetType: "single",
-            targetKind: "enemy",
-        },
-    },
-    {
-        type: "support",
-        title: "Phantom blood",
-        description:
-            "Bleeds to near death, giving a others [Confidence] and [Patience].",
-        details: {
-            baseDamage: 0,
-            focusCost: 20,
+            focusCost: 15,
             coolDown: "one time use",
-            healthRestore: 0,
-            additionalEffects: [{ type: "bleed", duration: 4 }],
-            targetType: "area",
-            targetKind: "self",
+            healthRestore: 100,
+            targetType: "multiple",
+            targetKind: "enemy",
         },
     },
 ];

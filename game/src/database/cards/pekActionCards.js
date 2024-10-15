@@ -5,43 +5,43 @@ const pekActions = [
         description:
             "Traps an enemy in their own thoughts, confusing them and limiting their actions for a turn.",
         details: {
-            baseDamage: 0,
-            focusCost: 10,
+            focusCost: 15,
             coolDown: "one time use",
-            healthRestore: 0,
-            additionalEffects: [],
-            targetType: "single",
+            additionalEffects: [{ type: "confusion", duration: 5 }],
+            targetType: "multiple",
+            targetKind: "enemy",
         },
     },
     {
         type: "deBuff",
         title: "It's Changing",
         description:
-            "Alters the fabric of reality around an enemy, causing disorientation and random effects.",
+            "Alters the fabric of reality around an enemy, causing disorientation.",
         details: {
-            baseDamage: 0,
-            focusCost: 15,
+            focusCost: 5,
             coolDown: 3,
-            healthRestore: 0,
-            additionalEffects: [{ type: "confusion", duration: 1 }],
+            additionalEffects: [
+                { type: "confusion", duration: 3 },
+                { type: "bleed", duration: 3, bleedDamage: 10 },
+            ],
             targetType: "single",
+            targetKind: "enemy",
         },
     },
     {
         type: "buff",
         title: "Think, THINK",
         description:
-            "Harnesses creativity to gain insight into the next moves, boosting Pek’s stats.",
+            "Harnesses creativity to gain insight into the next moves, boosting members' stats.",
         details: {
-            baseDamage: 0,
             focusCost: 5,
-            coolDown: 1,
-            healthRestore: 0,
+            coolDown: 3,
             additionalEffects: [
                 { type: "attack boost", amount: 10 },
                 { type: "focus boost", amount: 15 },
             ],
-            targetKind: "self",
+            targetType: "multiple",
+            targetKind: "party",
         },
     },
     {
@@ -50,11 +50,25 @@ const pekActions = [
         description:
             "Taps into instincts to gain a defensive advantage, increasing the chance to evade attacks.",
         details: {
-            baseDamage: 0,
-            focusCost: 8,
+            focusCost: 10,
             coolDown: 2,
-            healthRestore: 0,
-            additionalEffects: [{ type: "evasion boost", amount: 30 }],
+            additionalEffects: [{ type: "instinct boost", amount: 15 }],
+            targetType: "single",
+            targetKind: "self",
+        },
+    },
+    {
+        type: "buff",
+        title: "Phantom Blood",
+        description:
+            "Bleeds to near death, giving a others [Confidence] and [Patience].",
+        details: {
+            focusCost: 15,
+            coolDown: 2,
+            additionalEffects: [
+                { type: "bleed", duration: 4, bleedDamage: 10 },
+            ],
+            targetType: "single",
             targetKind: "self",
         },
     },
