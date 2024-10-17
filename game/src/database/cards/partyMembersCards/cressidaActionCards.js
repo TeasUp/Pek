@@ -40,7 +40,7 @@ const cressidaActions = [
                     target: "multiple",
                     targetKind: "enemy",
                 },
-                { type: "shield", attackProtection: 10, target: "party" }, // Shields allies too
+                { type: "shield", attackProtection: 10, target: "party" },
             ],
         },
     },
@@ -67,7 +67,7 @@ const cressidaActions = [
                     target: "multiple",
                     targetKind: "enemy",
                 },
-                { type: "slowness", duration: 2, amount: 10, target: "enemy" }, // Debuff
+                { type: "slowness", duration: 2, amount: 10, target: "enemy" },
             ],
         },
     },

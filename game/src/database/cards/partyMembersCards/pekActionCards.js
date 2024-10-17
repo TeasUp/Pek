@@ -71,16 +71,14 @@ const pekActions = [
             boosts: {
                 instinct: { target: "self", amount: 15 },
             },
-            effects: [
-                { type: "evasion", amount: 15, target: "self" }, // Defensive boost
-            ],
+            effects: [{ type: "evasion", amount: 15, target: "self" }],
         },
     },
     {
         type: "buff",
         title: "Phantom Blood",
         description:
-            "Bleeds to near death, granting others confidence and patience.",
+            "Sacrifices her own health to grant others confidence and patience.",
         details: {
             costs: {
                 focus: 15,
@@ -91,9 +89,7 @@ const pekActions = [
                 confidence: { target: "party", amount: 10 },
                 patience: { target: "party", amount: 10 },
             },
-            effects: [
-                { type: "sacrifice", amount: 70, target: "self" }, // Health sacrifice
-            ],
+            effects: [{ type: "sacrifice", amount: 70, target: "self" }],
         },
     },
 ];
