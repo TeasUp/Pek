@@ -80,13 +80,23 @@
     flex-wrap: wrap;
     gap: 8px;
 }
-
 .detail {
-    background-color: #00f;
     color: #fff;
     font-size: 10px;
     padding: 4px 8px;
     border: 2px solid #0ff;
+}
+
+.detail[class*="-info"] {
+    background-color: #00f;
+}
+
+.detail[class*="-cost"] {
+    background-color: #f00;
+}
+
+.detail[class*="-effect"] {
+    background-color: #00bfa5;
 }
 
 .actions {

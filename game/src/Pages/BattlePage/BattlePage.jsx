@@ -1,6 +1,7 @@
 import React from "react";
 import "./BattlePage.css";
 import actionCards from "../../database/cards/mainActionCards";
+import pekActions from "../../database/cards/partyMembersCards/pekActionCards";
 import battleActions from "../../database/options/battleActions";
 import cressidaActions from "../../database/cards/partyMembersCards/cressidaActionCards";
 
@@ -9,63 +10,63 @@ export default function battlePage() {
         <main className="battle-page">
             <section className="main-container">
                 <section className="cards">
-                    {cressidaActions.map((action) => (
+                    {pekActions.map((action) => (
                         <div key={action.title} className="card">
-                            {action.type && (
-                                <div className="card-type">
-                                    {action.type.toUpperCase()}
-                                    {action.additionalType &&
-                                        ` + ${action.additionalType.toUpperCase()}`}
-                                </div>
-                            )}
-                            {action.title && (
-                                <h2 className="card-title">{action.title}</h2>
-                            )}
-                            {action.description && (
-                                <p className="card-description">
-                                    {action.description}
-                                </p>
-                            )}
+                            <div className="card-type">
+                                {action.type.toUpperCase()}
+                                {action.additionalType &&
+                                    ` + ${action.additionalType.toUpperCase()}`}
+                            </div>
+
+                            <h2 className="card-title">{action.title}</h2>
+
+                            <p className="card-description">
+                                {action.description}
+                            </p>
+
                             <div className="card-details">
-                                {action.type === "attack" &&
-                                    action.details.baseDamage && (
-                                        <span className="detail">
-                                            Base Damage:{" "}
-                                            {action.details.baseDamage}
+                                {Object.entries(action.details.costs).map(
+                                    ([costType, amount]) => (
+                                        <span
+                                            key={costType}
+                                            className="detail detail-cost"
+                                        >
+                                            {costType} Cost: {amount}
                                         </span>
-                                    )}
-                                {action.details.focusCost && (
-                                    <span className="detail">
-                                        Focus Cost: {action.details.focusCost}
+                                    )
+                                )}
+
+                                {action.details.baseDamage && (
+                                    <span className="detail detail-info">
+                                        Base Damage: {action.details.baseDamage}
                                     </span>
                                 )}
-                                {action.details.coolDown && (
-                                    <span className="detail">
-                                        CoolDown: {action.details.coolDown}{" "}
-                                        turn(s)
-                                    </span>
-                                )}
+
+                                <span className="detail detail-info">
+                                    CoolDown: {action.details.coolDown}{" "}
+                                    {action.details.coolDown !== "one time use" && "turns"}
+                                </span>
+
                                 {action.details.healthRestore && (
-                                    <span className="detail">
+                                    <span className="detail detail-info">
                                         Health Restore:{" "}
                                         {action.details.healthRestore}
                                     </span>
                                 )}
-                                {action.details.additionalEffects &&
-                                    action.details.additionalEffects.length >
-                                        0 && (
-                                        <span className="detail">
-                                            Effects:{" "}
-                                            {action.details.additionalEffects
-                                                .map((effect) => effect.type)
-                                                .join(", ")}
-                                        </span>
+
+                                {action.details.effects &&
+                                    action.details.effects.map(
+                                        (effect, index) => (
+                                            <span
+                                                key={index}
+                                                className="detail detail-effect"
+                                            >
+                                                {effect.type}{" "}
+                                                {effect.amount &&
+                                                    `: ${effect.amount}`}
+                                            </span>
+                                        )
                                     )}
-                                {action.details.targetType && (
-                                    <span className="detail">
-                                        Target Type: {action.details.targetType}
-                                    </span>
-                                )}
                             </div>
                         </div>
                     ))}

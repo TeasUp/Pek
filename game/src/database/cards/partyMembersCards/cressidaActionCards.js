@@ -6,70 +6,86 @@ const cressidaActions = [
             "Swings her sword with doubt, unsure of her strength, but still determined to protect.",
         details: {
             baseDamage: 9,
-            focusCost: 6,
+            costs: {
+                focus: 6,
+                confidence: 2,
+            },
             coolDown: 2,
-            targetType: "single",
-            targetKind: "enemy",
+            effects: [
+                {
+                    type: "damage",
+                    amount: 9,
+                    target: "single",
+                    targetKind: "enemy",
+                },
+            ],
         },
     },
     {
         type: "attack",
-        additionalType: "defense",
+        additionalType: "shield",
         title: "You Will Not",
         description:
-            "A swing designed more to defend than to harm, reflecting her nature...",
+            "A swing designed more to defend than to harm, reflecting her protective nature.",
         details: {
             baseDamage: 7,
-            focusCost: 5,
+            costs: {
+                focus: 5,
+            },
             coolDown: 3,
-            additionalEffects: [{ type: "shield", attackProtection: 10 }],
-            targetType: "multiple",
-            targetKind: "both",
+            effects: [
+                {
+                    type: "damage",
+                    amount: 7,
+                    target: "multiple",
+                    targetKind: "enemy",
+                },
+                { type: "shield", attackProtection: 10, target: "party" }, // Shields allies too
+            ],
         },
     },
     {
         type: "attack",
-        title: "Fractured ",
+        title: "Fractured",
         description:
-            "Harnesses creativity to gain insight into the next moves, boosting members' stats.",
+            "For a brief moment, she unleashes her Entropy power, creating an unpredictable strike.",
         details: {
             baseDamage: 15,
-            focusCost: 8,
+            costs: {
+                focus: 8,
+                confidence: 5,
+            },
             coolDown: 4,
-            additionalEffects: [
-                { type: "slowness", duration: 2, slownessAmount: 10   },
-                { type: "focus boost", amount: 15 },
+            boosts: {
+                focus: { target: "party", amount: 15 },
+                confidence: { target: "party", amount: 5 },
+            },
+            effects: [
+                {
+                    type: "damage",
+                    amount: 15,
+                    target: "multiple",
+                    targetKind: "enemy",
+                },
+                { type: "slowness", duration: 2, amount: 10, target: "enemy" }, // Debuff
             ],
-            targetType: "multiple",
-            targetKind: "party",
         },
     },
     {
         type: "shield",
-        title: "I Hear It",
+        title: "Wavering Guard",
         description:
-            "Taps into instincts to gain a defensive advantage, increasing the chance to evade attacks.",
+            "Raises her sword to form a defense, questioning if she can hold it.",
         details: {
-            focusCost: 10,
+            costs: {
+                focus: 10,
+                confidence: 5,
+            },
             coolDown: 2,
-            additionalEffects: [{ type: "instinct boost", amount: 15 }],
-            targetType: "single",
-            targetKind: "self",
-        },
-    },
-    {
-        type: "attack",
-        title: "Phantom Blood",
-        description:
-            "Bleeds to near death, giving a others [Confidence] and [Patience].",
-        details: {
-            focusCost: 15,
-            coolDown: 2,
-            additionalEffects: [
-                { type: "bleed", duration: 4, bleedDamage: 10 },
-            ],
-            targetType: "single",
-            targetKind: "self",
+            boosts: {
+                instinct: { target: "self", amount: 15 },
+            },
+            effects: [{ type: "shield", amount: 15, target: "self" }],
         },
     },
 ];
