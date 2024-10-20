@@ -12,19 +12,17 @@
 }
 
 .battle-container {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     max-width: 1200px;
-    margin: 0 5rem; /* Adding 5rem margin from left and right */
-    box-sizing: border-box; /* Ensure padding/margins are included in width */
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
 }
 
 .main-container {
     display: flex;
     justify-content: center;
     width: 100%;
+    max-width: 1200px;
 }
 
 .cards {
@@ -35,6 +33,73 @@
     padding: 20px;
     height: 300px;
 }
+
+.fight-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 10px 3rem 10px;
+    margin-bottom: 3rem;
+    border-bottom: 4px white solid;
+}
+
+.split {
+    width: 2px;
+    background-color: #fff;
+    margin: 0 20px;
+    height: auto;
+}
+
+.enemy-container,
+.party-container {
+    display: flex;
+    overflow-x: auto;
+    padding: 10px;
+}
+
+.enemies,
+.party-members {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+}
+
+.enemy,
+.member {
+    background-color: #333;
+    border: 2px solid #fff;
+    padding: 10px;
+    width: 250px;
+    height: 400px;
+    text-align: center;
+}
+
+.enemy-image img,
+.member-image img {
+    width: 100%;
+    height: auto;
+}
+
+.enemy-info,
+.member-info {
+    margin-top: 10px;
+}
+
+.enemy-name,
+.member-name {
+    color: #ff0;
+    font-size: 14px;
+}
+
+.enemy-health,
+.member-health,
+.enemy-focus,
+.member-focus {
+    color: #f00;
+    font-size: 12px;
+}
+
+/* card stuff */
 
 .card {
     position: relative;

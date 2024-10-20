@@ -7,9 +7,62 @@ export default function BattlePage() {
     return (
         <main className="battle-page">
             <div className="battle-container">
-                {" "}
-                {/* New container */}
+                <section className="fight-container">
+                    {/* Enemy Section */}
+                    <section className="enemy-container">
+                        <ul className="enemies">
+                            <li className="enemy selected">
+                                <div className="enemy-image"></div>
+                                <div className="enemy-info">
+                                    <h2 className="enemy-name">Enemy Name</h2>
+                                    <h2 className="enemy-health">120 HP</h2>
+                                    <h2 className="enemy-focus">50 Focus</h2>
+                                </div>
+                            </li>
+
+                            {/* Add more enemies here if needed */}
+                            <li className="enemy">
+                                <div className="enemy-image"></div>
+                                <div className="enemy-info">
+                                    <h2 className="enemy-name">Enemy Name 2</h2>
+                                    <h2 className="enemy-health">100 HP</h2>
+                                    <h2 className="enemy-focus">40 Focus</h2>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <div className="split"></div>
+
+                    {/* Party Section */}
+                    <section className="party-container">
+                        <ul className="party-members">
+                            <li className="member playing">
+                                <div className="member-image"></div>
+                                <div className="member-info">
+                                    <h2 className="member-name">Member Name</h2>
+                                    <h2 className="member-health">120 HP</h2>
+                                    <h2 className="member-focus">50 Focus</h2>
+                                </div>
+                            </li>
+
+                            {/* Add more party members here if needed */}
+                            <li className="member">
+                                <div className="member-image"></div>
+                                <div className="member-info">
+                                    <h2 className="member-name">
+                                        Member Name 2
+                                    </h2>
+                                    <h2 className="member-health">90 HP</h2>
+                                    <h2 className="member-focus">60 Focus</h2>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                </section>
+
                 <section className="main-container">
+                    {/* Cards Section */}
                     <section className="cards">
                         {pekActions.map((action) => (
                             <div key={action.title} className="card">
@@ -78,6 +131,7 @@ export default function BattlePage() {
                         ))}
                     </section>
 
+                    {/* Actions Section */}
                     <section className="actions">
                         <ul>
                             {battleActions.map((action, index) => (
