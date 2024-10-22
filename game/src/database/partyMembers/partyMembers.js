@@ -16,12 +16,12 @@ const partyMembers = [
     },
     {
         name: "cressida",
-        image: "pek_normal.png",
+        image: "cressida_normal.png",
         stats: {
-            health: 120,
+            health: 130,
             focus: 50,
             confidence: 45,
-            creativity: 50,
+            creativity: 40,
             instinct: 55,
             patience: 50,
         },
