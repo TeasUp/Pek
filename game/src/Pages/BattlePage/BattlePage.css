@@ -1,4 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@font-face {
+    font-family: "PressStart2P";
+    src: url("../../fonts/PressStart2P-Regular.ttf") format("truetype");
+}
 
 .battle-page {
     background-color: #000;
@@ -6,7 +9,8 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    font-family: "Press Start 2P", cursive;
+    font-family: "PressStart2P";
+    letter-spacing: 1px;
     image-rendering: pixelated;
     padding: 20px;
 }
@@ -22,7 +26,6 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    max-width: 1200px;
 }
 
 .cards {
@@ -38,9 +41,7 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding: 10px 10px 3rem 10px;
-    margin-bottom: 3rem;
-    border-bottom: 4px white solid;
+    padding: 15px 15px 40px 15px;
 }
 
 .split {
@@ -70,7 +71,6 @@
     border: 2px solid #fff;
     padding: 10px;
     width: 250px;
-    height: 400px;
     text-align: center;
 }
 
@@ -82,7 +82,12 @@
 
 .enemy-info,
 .member-info {
-    margin-top: 10px;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 2px solid #fff;
+    gap: 16px;
+    display: flex;
+    flex-direction: column;
 }
 
 .enemy-name,
@@ -91,15 +96,15 @@
     font-size: 14px;
 }
 
-.enemy-health,
-.member-health,
-.enemy-focus,
-.member-focus {
+.enemy-detail,
+.member-detail {
     color: #f00;
     font-size: 12px;
 }
 
-/* card stuff */
+.selected {
+    border-color: #ff0;
+}
 
 .card {
     position: relative;
@@ -203,7 +208,7 @@
 }
 
 .action-button {
-    font-family: "Press Start 2P", cursive;
+    font-family: "PressStart2P";
     background-color: #333;
     color: #ff0;
     border: 2px solid #ff0;
