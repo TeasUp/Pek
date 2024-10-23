@@ -6,7 +6,7 @@ const partyMembers = [
         image: "pek_normal.png",
         stats: {
             health: 80,
-            focus: 50,
+            focus: 55,
             confidence: 45,
             creativity: 50,
             instinct: 55,
@@ -21,7 +21,7 @@ const partyMembers = [
             health: 130,
             focus: 50,
             confidence: 45,
-            creativity: 40,
+            creativity: 45,
             instinct: 55,
             patience: 50,
         },

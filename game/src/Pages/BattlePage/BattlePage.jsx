@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "./BattlePage.css";
-import pekActions from "../../database/cards/partyMembersCards/pekActionCards";
 import battleActions from "../../database/options/battleActions";
 import partyMembers from "../../database/partyMembers/partyMembers";
 
+import calculateTurn from "../../utils/functions/calculateTurn";
+
 export default function BattlePage() {
+    const [turnsOrder, setTurnsOrder] = useState(calculateTurn(partyMembers));
     return (
         <main className="battle-page">
             <div className="battle-container">
@@ -41,7 +43,9 @@ export default function BattlePage() {
                                 <li
                                     key={index}
                                     className={`member ${
-                                        index === 0 ? "selected" : ""
+                                        member.name === turnsOrder[0].name
+                                            ? "selected"
+                                            : ""
                                     }`}
                                 >
                                     <div className="member-image">
@@ -69,7 +73,7 @@ export default function BattlePage() {
 
                 <section className="main-container">
                     <section className="cards">
-                        {pekActions.map((action) => (
+                        {turnsOrder[0].actions.map((action) => (
                             <div key={action.title} className="card">
                                 <div className="card-type">
                                     {action.type.toUpperCase()}
