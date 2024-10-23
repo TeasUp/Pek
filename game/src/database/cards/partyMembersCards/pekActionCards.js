@@ -6,8 +6,8 @@ const pekActions = [
             "Traps an enemy in their own thoughts, confusing them and limiting their actions for a turn.",
         details: {
             costs: {
-                focus: 15,
-                health: 5,
+                focus: 10,
+                health: 10,
             },
             coolDown: "one time use",
             effects: [
@@ -82,14 +82,13 @@ const pekActions = [
         details: {
             costs: {
                 focus: 15,
-                health: 70,
             },
             coolDown: 2,
             boosts: {
                 confidence: { target: "party", amount: 10 },
                 patience: { target: "party", amount: 10 },
             },
-            effects: [{ type: "sacrifice", amount: 70, target: "self" }],
+            effects: [{ type: "sacrifice", amountPercent: 70, target: "self" }],
         },
     },
 ];
