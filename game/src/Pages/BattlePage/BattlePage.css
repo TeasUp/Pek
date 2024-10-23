@@ -103,7 +103,7 @@
 }
 
 .selected {
-    border-color: #ff0;
+    border: 4px dashed #ff0;
 }
 
 .card {

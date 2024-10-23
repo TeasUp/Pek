@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import usePartyMembers from "../../database/partyMembers/usePartyMembers";
 import calculateTurn from "../../utils/functions/calculateTurn";
 
 export default function useCard(partyMembers, setPartyMembers) {
