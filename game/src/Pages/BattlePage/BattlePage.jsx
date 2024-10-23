@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import "./BattlePage.css";
 import battleActions from "../../database/options/battleActions";
-import partyMembers from "../../database/partyMembers/partyMembers";
-
-import calculateTurn from "../../utils/functions/calculateTurn";
+import usePartyMembers from "../../database/partyMembers/usePartyMembers";
+import useCard from "../../utils/hooks/useCard";
 
 export default function BattlePage() {
-    const [turnsOrder, setTurnsOrder] = useState(calculateTurn(partyMembers));
+    const [partyMembers, setPartyMembers] = usePartyMembers();
+    const { playCard, turnsOrder } = useCard(partyMembers, setPartyMembers);
+
     return (
         <main className="battle-page">
             <div className="battle-container">
@@ -73,22 +74,26 @@ export default function BattlePage() {
 
                 <section className="main-container">
                     <section className="cards">
-                        {turnsOrder[0].actions.map((action) => (
-                            <div key={action.title} className="card">
+                        {turnsOrder[0].cards.map((card) => (
+                            <div
+                                key={card.title}
+                                className="card"
+                                onClick={() => playCard(card, turnsOrder[0])}
+                            >
                                 <div className="card-type">
-                                    {action.type.toUpperCase()}
-                                    {action.additionalType &&
-                                        ` + ${action.additionalType.toUpperCase()}`}
+                                    {card.type.toUpperCase()}
+                                    {card.additionalType &&
+                                        ` + ${card.additionalType.toUpperCase()}`}
                                 </div>
 
-                                <h2 className="card-title">{action.title}</h2>
+                                <h2 className="card-title">{card.title}</h2>
 
                                 <p className="card-description">
-                                    {action.description}
+                                    {card.description}
                                 </p>
 
                                 <div className="card-details">
-                                    {Object.entries(action.details.costs).map(
+                                    {Object.entries(card.details.costs).map(
                                         ([costType, amount]) => (
                                             <span
                                                 key={costType}
@@ -103,27 +108,27 @@ export default function BattlePage() {
                                         )
                                     )}
 
-                                    {action.details.baseDamage && (
+                                    {card.details.baseDamage && (
                                         <span className="detail detail-info">
                                             Base Damage:{" "}
-                                            {action.details.baseDamage}
+                                            {card.details.baseDamage}
                                         </span>
                                     )}
 
                                     <span className="detail detail-info">
-                                        CoolDown: {action.details.coolDown}{" "}
-                                        {action.details.coolDown !==
+                                        CoolDown: {card.details.coolDown}{" "}
+                                        {card.details.coolDown !==
                                             "one time use" && "turns"}
                                     </span>
 
-                                    {action.details.healthRestore && (
+                                    {card.details.healthRestore && (
                                         <span className="detail detail-info">
                                             Health Restore:{" "}
-                                            {action.details.healthRestore}
+                                            {card.details.healthRestore}
                                         </span>
                                     )}
 
-                                    {(action.details.effects || []).map(
+                                    {(card.details.effects || []).map(
                                         (effect, index) => (
                                             <span
                                                 key={`${effect.type}-${index}`}
