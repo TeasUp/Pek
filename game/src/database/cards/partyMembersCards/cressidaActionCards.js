@@ -11,6 +11,7 @@ const cressidaActions = [
                 confidence: 2,
             },
             coolDown: 2,
+            currentCooldown: 0,
             effects: [
                 {
                     type: "damage",
@@ -33,6 +34,7 @@ const cressidaActions = [
                 focus: 5,
             },
             coolDown: 3,
+            currentCooldown: 0,
             effects: [
                 {
                     type: "damage",
@@ -56,6 +58,7 @@ const cressidaActions = [
                 confidence: 5,
             },
             coolDown: 4,
+            currentCooldown: 0,
             boosts: {
                 focus: { target: "party", amount: 15 },
                 confidence: { target: "party", amount: 5 },
@@ -82,6 +85,7 @@ const cressidaActions = [
                 confidence: 5,
             },
             coolDown: 2,
+            currentCooldown: 0,
             boosts: {
                 instinct: { target: "self", amount: 15 },
             },

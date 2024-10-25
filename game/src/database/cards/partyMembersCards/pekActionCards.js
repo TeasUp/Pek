@@ -10,6 +10,7 @@ const pekActions = [
                 health: 10,
             },
             coolDown: "one time use",
+            currentCooldown: 0,
             effects: [
                 {
                     type: "confusion",
@@ -31,6 +32,7 @@ const pekActions = [
                 health: 3,
             },
             coolDown: 3,
+            currentCooldown: 0,
             effects: [
                 {
                     type: "confusion",
@@ -52,6 +54,7 @@ const pekActions = [
                 focus: 5,
             },
             coolDown: 4,
+            currentCooldown: 0,
             boosts: {
                 attack: { target: "party", amount: 10 },
                 focus: { target: "party", amount: 15 },
@@ -68,6 +71,7 @@ const pekActions = [
                 focus: 10,
             },
             coolDown: 2,
+            currentCooldown: 0,
             boosts: {
                 instinct: { target: "self", amount: 15 },
             },
@@ -84,6 +88,7 @@ const pekActions = [
                 focus: 15,
             },
             coolDown: 2,
+            currentCooldown: 0,
             boosts: {
                 confidence: { target: "party", amount: 10 },
                 patience: { target: "party", amount: 10 },

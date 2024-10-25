@@ -7,7 +7,14 @@ import canUseCard from "../../utils/functions/canUseCard";
 
 export default function BattlePage() {
     const [partyMembers, setPartyMembers] = usePartyMembers();
-    const { playCard, turnsOrder } = useCard(partyMembers, setPartyMembers);
+    const { playCard, turnsOrder, activePlayerIndex } = useCard(
+        partyMembers,
+        setPartyMembers
+    );
+
+    const currentPlayer = partyMembers.find(
+        (member) => member.currentTurn === true
+    );
 
     return (
         <main className="battle-page">
@@ -75,20 +82,17 @@ export default function BattlePage() {
 
                 <section className="main-container">
                     <section className="cards">
-                        {turnsOrder[0].cards.map(
+                        {currentPlayer.cards.map(
                             (card) =>
                                 canUseCard(
-                                    partyMembers.find(
-                                        (member) =>
-                                            member.name === turnsOrder[0].name
-                                    ).stats,
+                                    currentPlayer.stats,
                                     card.details.costs
                                 ) && (
                                     <div
                                         key={card.title}
                                         className="card"
                                         onClick={() =>
-                                            playCard(card, turnsOrder[0])
+                                            playCard(card, currentPlayer)
                                         }
                                     >
                                         <div className="card-type">
@@ -130,9 +134,12 @@ export default function BattlePage() {
 
                                             <span className="detail detail-info">
                                                 CoolDown:{" "}
-                                                {card.details.coolDown}{" "}
-                                                {card.details.coolDown !==
-                                                    "one time use" && "turns"}
+                                                {card.cooldown > 0
+                                                    ? `${card.cooldown} turns`
+                                                    : card.details.coolDown ===
+                                                      "one time use"
+                                                    ? "one time use"
+                                                    : `${card.details.coolDown} turns`}
                                             </span>
 
                                             {card.details.healthRestore && (

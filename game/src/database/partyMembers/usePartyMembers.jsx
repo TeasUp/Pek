@@ -16,6 +16,8 @@ export default function usePartyMembers() {
                 patience: 50,
             },
             cards: pekCards,
+            currentTurn: true,
+            effects: [],
         },
         {
             name: "cressida",
@@ -29,6 +31,8 @@ export default function usePartyMembers() {
                 patience: 50,
             },
             cards: cressidaCards,
+            currentTurn: false,
+            effects: [],
         },
     ]);
 
