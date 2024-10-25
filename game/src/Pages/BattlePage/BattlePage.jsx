@@ -3,6 +3,7 @@ import "./BattlePage.css";
 import battleActions from "../../database/options/battleActions";
 import usePartyMembers from "../../database/partyMembers/usePartyMembers";
 import useCard from "../../utils/hooks/useCard";
+import canUseCard from "../../utils/functions/canUseCard";
 
 export default function BattlePage() {
     const [partyMembers, setPartyMembers] = usePartyMembers();
@@ -74,75 +75,89 @@ export default function BattlePage() {
 
                 <section className="main-container">
                     <section className="cards">
-                        {turnsOrder[0].cards.map((card) => (
-                            <div
-                                key={card.title}
-                                className="card"
-                                onClick={() => playCard(card, turnsOrder[0])}
-                            >
-                                <div className="card-type">
-                                    {card.type.toUpperCase()}
-                                    {card.additionalType &&
-                                        ` + ${card.additionalType.toUpperCase()}`}
-                                </div>
+                        {turnsOrder[0].cards.map(
+                            (card) =>
+                                canUseCard(
+                                    partyMembers.find(
+                                        (member) =>
+                                            member.name === turnsOrder[0].name
+                                    ).stats,
+                                    card.details.costs
+                                ) && (
+                                    <div
+                                        key={card.title}
+                                        className="card"
+                                        onClick={() =>
+                                            playCard(card, turnsOrder[0])
+                                        }
+                                    >
+                                        <div className="card-type">
+                                            {card.type.toUpperCase()}
+                                            {card.additionalType &&
+                                                ` + ${card.additionalType.toUpperCase()}`}
+                                        </div>
 
-                                <h2 className="card-title">{card.title}</h2>
+                                        <h2 className="card-title">
+                                            {card.title}
+                                        </h2>
 
-                                <p className="card-description">
-                                    {card.description}
-                                </p>
+                                        <p className="card-description">
+                                            {card.description}
+                                        </p>
 
-                                <div className="card-details">
-                                    {Object.entries(card.details.costs).map(
-                                        ([costType, amount]) => (
-                                            <span
-                                                key={costType}
-                                                className="detail detail-cost"
-                                            >
-                                                {costType
-                                                    .charAt(0)
-                                                    .toUpperCase() +
-                                                    costType.slice(1)}{" "}
-                                                Cost: {amount}
+                                        <div className="card-details">
+                                            {Object.entries(
+                                                card.details.costs
+                                            ).map(([costType, amount]) => (
+                                                <span
+                                                    key={costType}
+                                                    className="detail detail-cost"
+                                                >
+                                                    {costType
+                                                        .charAt(0)
+                                                        .toUpperCase() +
+                                                        costType.slice(1)}{" "}
+                                                    Cost: {amount}
+                                                </span>
+                                            ))}
+
+                                            {card.details.baseDamage && (
+                                                <span className="detail detail-info">
+                                                    Base Damage:{" "}
+                                                    {card.details.baseDamage}
+                                                </span>
+                                            )}
+
+                                            <span className="detail detail-info">
+                                                CoolDown:{" "}
+                                                {card.details.coolDown}{" "}
+                                                {card.details.coolDown !==
+                                                    "one time use" && "turns"}
                                             </span>
-                                        )
-                                    )}
 
-                                    {card.details.baseDamage && (
-                                        <span className="detail detail-info">
-                                            Base Damage:{" "}
-                                            {card.details.baseDamage}
-                                        </span>
-                                    )}
+                                            {card.details.healthRestore && (
+                                                <span className="detail detail-info">
+                                                    Health Restore:{" "}
+                                                    {card.details.healthRestore}
+                                                </span>
+                                            )}
 
-                                    <span className="detail detail-info">
-                                        CoolDown: {card.details.coolDown}{" "}
-                                        {card.details.coolDown !==
-                                            "one time use" && "turns"}
-                                    </span>
-
-                                    {card.details.healthRestore && (
-                                        <span className="detail detail-info">
-                                            Health Restore:{" "}
-                                            {card.details.healthRestore}
-                                        </span>
-                                    )}
-
-                                    {(card.details.effects || []).map(
-                                        (effect, index) => (
-                                            <span
-                                                key={`${effect.type}-${index}`}
-                                                className="detail detail-effect"
-                                            >
-                                                {effect.type}
-                                                {effect.duration &&
-                                                    ` for ${effect.duration} turns`}
-                                            </span>
-                                        )
-                                    )}
-                                </div>
-                            </div>
-                        ))}
+                                            {(card.details.effects || []).map(
+                                                (effect, index) => (
+                                                    <span
+                                                        key={`${effect.type}-${index}`}
+                                                        className="detail detail-effect"
+                                                    >
+                                                        {effect.type}
+                                                        {effect.duration &&
+                                                            ` for ${effect.duration} turns`}
+                                                    </span>
+                                                )
+                                            )}
+                                        </div>
+                                    </div>
+                                )
+                        )}
                     </section>
 
                     <section className="actions">
