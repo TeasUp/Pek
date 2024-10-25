@@ -4,6 +4,7 @@ const cressidaActions = [
         title: "Not So Sure",
         description:
             "Swings her sword with doubt, unsure of her strength, but still determined to protect.",
+        cooldown: 0,
         details: {
             baseDamage: 9,
             costs: {
@@ -11,7 +12,6 @@ const cressidaActions = [
                 confidence: 2,
             },
             coolDown: 2,
-            currentCooldown: 0,
             effects: [
                 {
                     type: "damage",
@@ -28,13 +28,13 @@ const cressidaActions = [
         title: "You Will Not",
         description:
             "A swing designed more to defend than to harm, reflecting her protective nature.",
+        cooldown: 0,
         details: {
             baseDamage: 7,
             costs: {
                 focus: 5,
             },
             coolDown: 3,
-            currentCooldown: 0,
             effects: [
                 {
                     type: "damage",
@@ -51,6 +51,7 @@ const cressidaActions = [
         title: "Fractured",
         description:
             "For a brief moment, she unleashes her Entropy power, creating an unpredictable strike.",
+        cooldown: 0,
         details: {
             baseDamage: 15,
             costs: {
@@ -58,7 +59,6 @@ const cressidaActions = [
                 confidence: 5,
             },
             coolDown: 4,
-            currentCooldown: 0,
             boosts: {
                 focus: { target: "party", amount: 15 },
                 confidence: { target: "party", amount: 5 },
@@ -79,13 +79,13 @@ const cressidaActions = [
         title: "Wavering Guard",
         description:
             "Raises her sword to form a defense, questioning if she can hold it.",
+        cooldown: 0,
         details: {
             costs: {
                 focus: 10,
                 confidence: 5,
             },
             coolDown: 2,
-            currentCooldown: 0,
             boosts: {
                 instinct: { target: "self", amount: 15 },
             },

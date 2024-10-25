@@ -4,13 +4,13 @@ const pekActions = [
         title: "Mind Prison",
         description:
             "Traps an enemy in their own thoughts, confusing them and limiting their actions for a turn.",
+        cooldown: 0,
         details: {
             costs: {
                 focus: 10,
                 health: 10,
             },
             coolDown: "one time use",
-            currentCooldown: 0,
             effects: [
                 {
                     type: "confusion",
@@ -26,13 +26,13 @@ const pekActions = [
         title: "It's Changing",
         description:
             "Alters the fabric of reality around an enemy, causing disorientation and bleeding.",
+        cooldown: 0,
         details: {
             costs: {
                 focus: 5,
                 health: 3,
             },
             coolDown: 3,
-            currentCooldown: 0,
             effects: [
                 {
                     type: "confusion",
@@ -49,12 +49,12 @@ const pekActions = [
         title: "Think, THINK",
         description:
             "Harnesses creativity to boost the party's attack and focus.",
+        cooldown: 0,
         details: {
             costs: {
                 focus: 5,
             },
             coolDown: 4,
-            currentCooldown: 0,
             boosts: {
                 attack: { target: "party", amount: 10 },
                 focus: { target: "party", amount: 15 },
@@ -66,12 +66,12 @@ const pekActions = [
         title: "I Hear It",
         description:
             "Taps into instincts to gain a defensive advantage, increasing evasion.",
+        cooldown: 0,
         details: {
             costs: {
                 focus: 10,
             },
             coolDown: 2,
-            currentCooldown: 0,
             boosts: {
                 instinct: { target: "self", amount: 15 },
             },
@@ -83,12 +83,12 @@ const pekActions = [
         title: "Phantom Blood",
         description:
             "Sacrifices her own health to grant others confidence and patience.",
+        cooldown: 0,
         details: {
             costs: {
                 focus: 15,
             },
             coolDown: 2,
-            currentCooldown: 0,
             boosts: {
                 confidence: { target: "party", amount: 10 },
                 patience: { target: "party", amount: 10 },
