@@ -52,9 +52,7 @@ export default function BattlePage() {
                                 <li
                                     key={index}
                                     className={`member ${
-                                        member.name === turnsOrder[0].name
-                                            ? "selected"
-                                            : ""
+                                        member.currentTurn ? "selected" : ""
                                     }`}
                                 >
                                     <div className="member-image">
